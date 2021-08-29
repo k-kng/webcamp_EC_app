@@ -7,3 +7,9 @@
   <%= f.submit '新規登録' %>
 
 <% end %>
+
+<h2>ジャンル</h2>
+<% @genres.each do |genre| %>
+  <span><%= genre.name %></span>
+  <span><%= link_to "編集する", edit_admin_genre_path(genre.id) %></span>
+<% end %>
