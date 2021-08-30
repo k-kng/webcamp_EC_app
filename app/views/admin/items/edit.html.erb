@@ -17,7 +17,7 @@
   <%= f.text_field :price %>
 
   <h4>販売ステータス</h4>
-  <%= f.select :is_active, {'販売中': 0, '売り切れ': 1}, { include_blank: '選択してください'} %>
+  <%= f.select :is_active, {'販売中': true, '売り切れ': false}, { include_blank: '選択してください'} %>
 
   <%= f.submit '変更保存' %>
 

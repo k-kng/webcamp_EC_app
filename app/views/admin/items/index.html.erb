@@ -12,6 +12,10 @@
   <% end %>
   <%=item.price %>
   <%=item.genre.name %>
-  <%=item.is_active %>
+  <% if item.is_active == true %>
+   販売中
+  <% elsif item.is_active == false %>
+   販売停止中
+  <% end %>
  </div>
 <% end %>
