@@ -8,6 +8,8 @@ Rails.application.routes.draw do
    resources :genres, only:[:index, :create, :edit, :update]
    resources :items
    resources :customers, only:[:index, :show, :edit, :update]
+   get "" => "homes#top"
+   resources :oders, only:[:show, :update]
  end
 
  devise_for :customers, controllers: {
