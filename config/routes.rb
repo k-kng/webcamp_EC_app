@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   passwords:     'public/customers/passwords',
   registrations: 'public/customers/registrations'
 }
+ root to: 'public/homes#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
