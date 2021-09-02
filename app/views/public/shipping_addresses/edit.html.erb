@@ -1,0 +1,15 @@
+<h2>配送先編集</h2>
+<%= form_with model:@shipping_address,url:shipping_address_path(@shipping_address), local:true do |f| %>
+
+ <p>郵便番号(ハイフンなし)</p>
+ <%= f.text_field :postal_code %>
+
+ <p>住所</p>
+ <%= f.text_field :address %>
+
+ <p>宛名</p>
+ <%= f.text_field :name %>
+
+ <%= f.submit '変更内容を保存' %>
+
+<% end %>

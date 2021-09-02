@@ -20,5 +20,7 @@ Rails.application.routes.draw do
  root to: 'public/homes#top'
  scope module: :public do
   resources :customers, only:[:show, :edit, :update]
+  get 'customers/check' => 'customers#check'
+  resources :shipping_addresses, only:[:index, :create, :edit, :update, :destroy]
  end
 end
