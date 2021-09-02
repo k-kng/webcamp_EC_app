@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- devise_for :admins, controllers: {
+ devise_for :admin, controllers: {
   sessions:      'admin/sessions/sessions',
   passwords:     'admin/sessions/passwords',
   registrations: 'admin/sessions/registrations'
@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   registrations: 'public/customers/registrations'
 }
  root to: 'public/homes#top'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+ scope module: :public do
+  resources :customers, only:[:show, :edit, :update]
+ end
 end

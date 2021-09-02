@@ -6,8 +6,10 @@
 <p>メールアドレス</p>
 <p>ステータス</p>
 <% @customers.each do |customer| %>
-<td><%= customer.id %></td>
-<td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
-<td><%= customer.email %></td>
-<td><%= customer.is_active %></td>
+ <div>
+   <td><%= customer.id %></td>
+   <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+   <td><%= customer.email %></td>
+   <td><%= customer.is_active %></td>
+ </div>
 <% end %>
