@@ -17,6 +17,6 @@
 <%= @customer.email %>
 
 <h2>配送先</h2>
-<p>一覧を見る</p>
+<%= link_to "一覧を見る", shipping_addresses_path(@customer.id) %>
 <h2>注文履歴</h2>
 <p>一覧を見る</p>
