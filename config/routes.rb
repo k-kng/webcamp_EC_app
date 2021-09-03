@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :customers, only:[:show, :edit, :update]
   get 'customers/check' => 'customers#check'
   resources :shipping_addresses, only:[:index, :create, :edit, :update, :destroy]
+  resources :items, only:[:index, :show]
  end
 
  root to: 'public/homes#top'
