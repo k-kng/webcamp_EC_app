@@ -15,7 +15,11 @@
 <p>メールアドレス</p>
 <%= @customer.email %>
 <p>会員ステータス</p>
-<%= @customer.is_active %>
+<% if @customer.is_active == true %>
+　有効
+<% elsif @customer.is_active == false %>
+  退会
+<% end %>
 
 <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
 <p>注文一覧を確認する</p>
