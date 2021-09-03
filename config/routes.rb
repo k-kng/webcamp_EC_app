@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 }
  namespace :admin do
    resources :genres, only:[:index, :create, :edit, :update]
-   resources :items
+   resources :items, only:[:show, :index, :new, :create, :edit, :update]
    resources :customers, only:[:index, :show, :edit, :update]
    get "" => "homes#top"
    resources :oders, only:[:show, :update]
