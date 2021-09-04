@@ -1,0 +1,20 @@
+<% if customer_signed_in? %>
+ <h2>ショッピングカート</h2>
+
+ <p>商品名</p>
+ <p>単価(税込)</p>
+ <p>数量</p>
+ <p>小計</p>
+ <p></p>
+
+ <% @cart_items.each do |cart_item| %>
+  <div>
+    <div>
+     <%= attachment_image_tag( cart_item.item, :image, size: "55x43" ) %>
+     <%= cart_item.item.name %>
+    </div>
+    
+  </div>
+ <% end %>
+<% end %>
+

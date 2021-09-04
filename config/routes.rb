@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   get 'customers/check' => 'customers#check'
   resources :shipping_addresses, only:[:index, :create, :edit, :update, :destroy]
   resources :items, only:[:index, :show]
+  resources :cart_items, only:[:index, :update, :create, :destroy] do
+   collection do
+    delete 'all_destroy'
+   end
+  end
  end
 
  root to: 'public/homes#top'
