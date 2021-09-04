@@ -1,11 +1,15 @@
 class Public::ShippingAddressesController < ApplicationController
+
+  before_action :authenticate_customer!
+
   def index
-    @shipping_address = ShippingAddress.new
     @shipping_addresses = ShippingAddress.all
+    @shipping_address = ShippingAddress.new
   end
 
   def create
     @shipping_address = ShippingAddress.new(shipping_address_params)
+    @shipping_address.customer_id = current_customer.id
     @shipping_address.save
     redirect_to shipping_addresses_path
   end
@@ -22,7 +26,7 @@ class Public::ShippingAddressesController < ApplicationController
 
   def destroy
     @shipping_address = ShippingAddress.find(params[:id])
-    @shipping_address.destroy(shipping_address_params)
+    @shipping_address.destroy
     redirect_to shipping_addresses_path
   end
 
