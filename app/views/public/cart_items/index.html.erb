@@ -8,13 +8,16 @@
  <p></p>
 
  <% @cart_items.each do |cart_item| %>
-  <div>
-    <div>
-     <%= attachment_image_tag( cart_item.item, :image, size: "55x43" ) %>
-     <%= cart_item.item.name %>
-    </div>
-    
-  </div>
+  <% if cart_item.customer_id == current_customer.id %>
+   <div>
+     <div>
+      <%= attachment_image_tag( cart_item.item, :image, size: "55x43" ) %>
+      <%= cart_item.item.name %>
+      <%= cart_item.item.add_tax_price%>
+      <%= cart_item.amount %>
+     </div>
+   </div>
+  <% end %>
  <% end %>
 <% end %>
 

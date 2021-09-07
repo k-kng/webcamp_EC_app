@@ -7,6 +7,11 @@ class Public::CartItemsController < ApplicationController
  def create
   @cart_item = current_customer.cart_items.new(params_cart_item)
   @cart_item.customer_id = current_customer.id
+  @update_cart_item =  CartItem.find_by(item: @cart_item.item)
+  if @update_cart_item.present? && @cart_item.valid?
+   @cart_item.amount += @update_cart_item.amount
+   @update_cart_item.destroy
+  end
   @cart_item.save
   redirect_to cart_items_path
  end
