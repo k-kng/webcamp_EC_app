@@ -28,6 +28,13 @@ Rails.application.routes.draw do
     delete 'all_destroy'
    end
   end
+  resources :orders, only:[:new, :index, :show] do
+   collection do
+    post 'confirm'
+    get 'thanks'
+    post 'create'
+   end
+  end
  end
 
  root to: 'public/homes#top'

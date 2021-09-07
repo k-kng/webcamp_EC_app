@@ -1,0 +1,16 @@
+<h2>注文情報入力</h2>
+
+<%= form_with model: @order, url:new_order_path, local:true do |f| %>
+ <p>支払方法</p>
+ <%= f.radio_button :payment_method, "credit_card" %>
+ <%= f.label :payment_method, "クレジットカード" %>
+
+ <%= f.radio_button :payment_method, "transfer" %>
+ <%= f.label :payment_method, "銀行振込" %>
+
+
+ <p>お届け先</p>
+ <%= f.select :address_id, options_from_collection_for_select(@customer, :id, :full_address) %>
+ <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :full_address) %>
+
+<% end %>
