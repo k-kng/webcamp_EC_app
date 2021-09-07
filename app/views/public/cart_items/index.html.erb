@@ -1,5 +1,6 @@
 <% if customer_signed_in? %>
  <h2>ショッピングカート</h2>
+ <%= link_to "削除する", all_destroy_cart_items_path(@cart_item), method: :delete %>
 
  <p>商品名</p>
  <p>単価(税込)</p>
@@ -13,11 +14,17 @@
      <div>
       <%= attachment_image_tag( cart_item.item, :image, size: "55x43" ) %>
       <%= cart_item.item.name %>
-      <%= cart_item.item.add_tax_price%>
+      <%= cart_item.item.add_tax_price %>
       <%= cart_item.amount %>
+      <%= cart_item.subtotal %>
+      <% @total_price += cart_item.subtotal %>
+      <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %>
      </div>
    </div>
   <% end %>
  <% end %>
+ <%= link_to "買い物を続ける", items_path %>
+ <p>合計金額</p>
+ <%= @total_price %>
 <% end %>
 
