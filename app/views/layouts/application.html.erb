@@ -10,50 +10,70 @@
   </head>
 
   <body>
-    <li>LOGO</li>
-    <% if admin_signed_in? %>
-     <li>
-      <%= link_to "商品一覧", admin_items_path %>
-     </li>
-     <li>
-      <%= link_to "会員一覧", admin_customers_path %>
-     </li>
-     <li>
-      注文履歴一覧
-     </li>
-     <li>
-      <%= link_to "ジャンル一覧", admin_genres_path %>
-     </li>
-     <li>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-     </li>
-    <% elsif customer_signed_in? %>
-     <li>
-      <%= link_to "マイページ", customer_path(current_customer) %>
-     </li>
-     <li>
-      <%= link_to "商品一覧", items_path %>
-     </li>
-     <li>
-      <%= link_to "カート", cart_items_path(current_customer) %>
-     </li>
-     <li>
-      <%= link_to " ログアウト", destroy_customer_session_path, method: :delete %>
-     </li>
-    <% else %>
-     <li>
-      <%= link_to "About", about_path %>
-     </li>
-     <li>
-      <%= link_to "商品一覧", items_path %>
-     </li>
-     <li>
-      <%= link_to "新規登録", new_customer_registration_path %>
-     </li>
-     <li>
-      <%= link_to "ログイン", new_customer_session_path %>
-     </li>
-    <% end %>
-    <%= yield %>
+   <header>
+    <nav class="navbar navbar navbar-expand-lg navbar-light bg-light">
+     <div class="container">
+      <a class="navbar-brand" href="/">LOGO</a>
+      <ul class="collapse navbar-collapse">
+       <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+         <li class="nav-item">
+           <%= link_to "商品一覧", admin_items_path, class:"nav-link text-black" %>
+          </button>
+         </li>
+         <li class="nav-item">
+           <%= link_to "会員一覧", admin_customers_path, class:"nav-link text-black" %>
+          </button>
+         </li>
+         <li class="nav-item">
+           <%= link_to "注文一覧", admin_path, class:"nav-link text-black" %>
+          </button>
+         </li>
+         <li class="nav-item">
+           <%= link_to "ジャンル一覧", admin_genres_path, class:"nav-link text-black" %>
+          </button>
+         </li>
+         <li class="nav-item">
+           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"nav-link text-black" %>
+          </button>
+         </li>
+        <% elsif customer_signed_in? %>
+         <li class="nav-item">
+           <%= link_to "マイページ", customer_path(current_customer), class:"nav-link text-black" %>
+          </button>
+         </li>
+         <li class="nav-item">
+           <%= link_to "商品一覧", items_path, class:"nav-link text-black" %>
+          </button>
+         </li>
+         <li class="nav-item">
+           <%= link_to "カート", cart_items_path(current_customer), class:"nav-link text-black" %>
+          </button>
+         </li>
+         <li class="nav-item">
+           <%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class:"nav-link text-black" %>
+          </button>
+         </li>
+        <% else %>
+         <li class="nav-item">
+           <%= link_to "About", about_path, class:"nav-link text-black" %>
+         </li>
+         <li class="nav-item">
+           <%= link_to "商品一覧", items_path, class:"nav-link text-black" %>
+         </li>
+         <li class="nav-item">
+           <%= link_to "新規登録", new_customer_registration_path, class:"nav-link text-black" %>
+         </li>
+         <li class="nav-item">
+           <%= link_to "ログイン", new_customer_session_path, class:"nav-link text-black" %>
+         </li>
+        <% end %>
+       </ul>
+      </ul>
+     </div>
+    </nav>
+   </header>
+   <p></p>
+   <%= yield %>
   </body>
 </html>

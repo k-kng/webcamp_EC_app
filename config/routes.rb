@@ -9,7 +9,7 @@ Rails.application.routes.draw do
    resources :items, only:[:show, :index, :new, :create, :edit, :update]
    resources :customers, only:[:index, :show, :edit, :update]
    get "" => "homes#top"
-   resources :oders, only:[:show, :update]
+   resources :orders, only:[:show, :update]
  end
 
  devise_for :customers, controllers: {
@@ -19,8 +19,12 @@ Rails.application.routes.draw do
 }
 
  scope module: :public do
-  resources :customers, only:[:show, :edit, :update]
-  get 'customers/check' => 'customers#check'
+  resources :customers, only:[:show, :edit, :update] do
+   collection do
+    get 'check'
+    patch 'withdrawal'
+   end
+  end
   resources :shipping_addresses, only:[:index, :create, :edit, :update, :destroy]
   resources :items, only:[:index, :show]
   resources :cart_items, only:[:index, :update, :create, :destroy] do
@@ -28,11 +32,10 @@ Rails.application.routes.draw do
     delete 'all_destroy'
    end
   end
-  resources :orders, only:[:new, :index, :show] do
+  resources :orders, only:[:new, :index, :show, :create] do
    collection do
     post 'confirm'
     get 'thanks'
-    post 'create'
    end
   end
  end

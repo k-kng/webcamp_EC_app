@@ -5,7 +5,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.2]
       t.integer :order_id
       t.integer :amount
       t.integer :sub_total
-      t.integer :task_status
+      t.integer :task_status, default: 0
 
       t.timestamps
     end

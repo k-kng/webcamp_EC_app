@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_120151) do
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
-    t.boolean "is_active"
+    t.boolean "is_active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_120151) do
     t.integer "order_id"
     t.integer "amount"
     t.integer "sub_total"
-    t.integer "task_status"
+    t.integer "task_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,11 +93,10 @@ ActiveRecord::Schema.define(version: 2021_09_02_120151) do
     t.string "postal_code"
     t.string "address"
     t.string "name"
-    t.string "payment"
-    t.integer "_method"
-    t.integer "postage"
+    t.integer "payment_method", default: 0
+    t.integer "postage", default: 800
     t.integer "total_amount"
-    t.integer "oder_status"
+    t.integer "oder_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
